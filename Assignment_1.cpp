@@ -1,12 +1,12 @@
 /*
     ==========================================================
- 	ASSIGNMENT 1 : CALCULATOR USING SWITCH AND CLASSES
+ 	ASSIGNMENT 1 : CALCULATOR USING SWITCH AND CLASSES 
     ==========================================================
  
     Code by: SAHIL HADKE
     Roll No: 17
     Batch: S1
-
+    This assignment can also be used as OOP 1st Assignment.
     Question: Write a code using basic OOP concepts.
 */
 
@@ -50,7 +50,7 @@ void Calc::Divide()
     cout<<"Answer: "<<(float)num1/num2<<endl;  
 
     /*
-      Some integers when divided give float answer 
+      Some integers when divided give answer in points
       For example: 5/2 = 2.5
       So if we print num1/num2, we get answer as 2 instead of 2.5, beacause
       the compiler will be giving result in int form.
