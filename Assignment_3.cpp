@@ -1,6 +1,6 @@
 /*
     =============================
- ASSIGNMENT 3 : MAGIC SQUARE 
+     ASSIGNMENT 3 : MAGIC SQUARE 
     =============================
  
     Code by: SAHIL HADKE
