@@ -163,7 +163,8 @@ void MagicNumber::CheckDiagonalRightToLeft()  //Checks the sum for other diagona
 int main()
 {
     MagicNumber obj; 
-    /*Since all the methods are c
+    /*
+    Since all the methods are c
     alled in the constructor, no need to call them in main
     */
     if(isMagicSquare)
