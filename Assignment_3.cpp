@@ -1,3 +1,15 @@
+/*
+    =============================
+ 	 ASSIGNMENT 3 : MAGIC SQUARE 
+    =============================
+ 
+    Code by: SAHIL HADKE
+    Roll No: 17
+    Batch: S1
+    Question: A magic square is an n * n matrix of the integers 1 to n^2
+              such that the sum of each row,
+              column, and diagonal is the same. Write C/C++ Program for checking a magic square.
+*/
 #include<iostream>
 using namespace std;
 
@@ -11,7 +23,7 @@ private:
     int matrix[100][100];
 
 public:
-    MagicNumber()
+    MagicNumber() //Constructor
     {
         getData();
         SetSum();
@@ -30,7 +42,7 @@ public:
     void CheckDiagonalRightToLeft();
 };
 
-void MagicNumber::getData()
+void MagicNumber::getData() //Takes input from user
 {
     cout<<"Enter n for (n x n) matrix: ";
     cin>>n;
@@ -47,7 +59,7 @@ void MagicNumber::getData()
     }
 }
 
-void MagicNumber::SetSum()
+void MagicNumber::SetSum() //Sets the sum of the give matrix. 
 {
     for(row = 1; row <= n*n; row++)
     {
@@ -58,7 +70,7 @@ void MagicNumber::SetSum()
     cout<<"\nSum is: "<<sum<<endl;
 }
 
-void MagicNumber::printMatrix()
+void MagicNumber::printMatrix()  //Prints the matrix
 {
     cout<<endl;
     cout<<"Your Matrix is: "<<endl;
@@ -74,7 +86,7 @@ void MagicNumber::printMatrix()
     cout<<endl;
 }
 
-void MagicNumber::CheckHorizontal()
+void MagicNumber::CheckHorizontal() //Checks the sum for all rows
 {
     if(isMagicSquare)
     {
@@ -95,7 +107,7 @@ void MagicNumber::CheckHorizontal()
     }
 }
 
-void MagicNumber::CheckVertical()
+void MagicNumber::CheckVertical()  //Checks the sum for all columns
 {
     if(isMagicSquare)
     {
@@ -116,7 +128,7 @@ void MagicNumber::CheckVertical()
     }
 }
 
-void MagicNumber::CheckDiagonalLeftToRight()
+void MagicNumber::CheckDiagonalLeftToRight() //Checks the sum of one diagonal.
 {
     if(isMagicSquare)
     {
@@ -132,7 +144,7 @@ void MagicNumber::CheckDiagonalLeftToRight()
     }
 }
 
-void MagicNumber::CheckDiagonalRightToLeft()
+void MagicNumber::CheckDiagonalRightToLeft()  //Checks the sum for other diagonal
 {
     if(isMagicSquare)
     {
@@ -150,8 +162,10 @@ void MagicNumber::CheckDiagonalRightToLeft()
 
 int main()
 {
-    MagicNumber obj;
-
+    MagicNumber obj; 
+    /*Since all the methods are c
+    alled in the constructor, no need to call them in main
+    */
     if(isMagicSquare)
     {
         cout<<"MAGIC SQUARE"<<endl;
