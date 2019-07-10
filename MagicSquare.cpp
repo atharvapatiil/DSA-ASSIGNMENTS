@@ -1,21 +1,20 @@
 /*
-    =============================
-     ASSIGNMENT 3 : MAGIC SQUARE 
-    =============================
- 
+    ===================================
+       ASSIGNMENT 3 : Magic Square 2
+    ===================================
+
     Code by: SAHIL HADKE
     Roll No: 17
     Batch: S1
-    Question: A magic square is an n * n matrix of the integers 1 to n^2
-              such that the sum of each row,
-              column, and diagonal is the same. Write C/C++ Program for checking a magic square.
+    Question: MagicSquare
 */
 #include<iostream>
 using namespace std;
 
+
 bool isMagicSquare = true; //global variable
 
-class MagicNumber
+class MagicSquare //Returns true if the user input is magic square
 {
 
 private:
@@ -23,7 +22,7 @@ private:
     int matrix[100][100];
 
 public:
-    MagicNumber() //Constructor
+    MagicSquare() //Default Constructor where all the functions are called
     {
         getData();
         SetSum();
@@ -32,6 +31,7 @@ public:
         CheckVertical();
         CheckDiagonalLeftToRight();
         CheckDiagonalRightToLeft();
+        Result();
     }
     void getData();
     void SetSum();
@@ -40,9 +40,30 @@ public:
     void CheckVertical();
     void CheckDiagonalLeftToRight();
     void CheckDiagonalRightToLeft();
+    void Result();
 };
 
-void MagicNumber::getData() //Takes input from user
+class CreateMS //Creates a magic square of n*n
+{
+    int n,row,col,i;
+	int matrix[100][100];
+
+public:
+    CreateMS() //Default Constructor where all the member functions are called
+    {
+        getData();
+        InitiateMatrix();
+        putData();
+        printMatrix();
+    }
+
+	void getData();
+	void InitiateMatrix();
+	void putData();
+	void printMatrix();
+};
+
+void MagicSquare::getData() //Takes input from user
 {
     cout<<"Enter n for (n x n) matrix: ";
     cin>>n;
@@ -59,7 +80,7 @@ void MagicNumber::getData() //Takes input from user
     }
 }
 
-void MagicNumber::SetSum() //Sets the sum of the give matrix. 
+void MagicSquare::SetSum() //Sets the sum of the give matrix.
 {
     for(row = 1; row <= n*n; row++)
     {
@@ -70,7 +91,7 @@ void MagicNumber::SetSum() //Sets the sum of the give matrix.
     cout<<"\nSum is: "<<sum<<endl;
 }
 
-void MagicNumber::printMatrix()  //Prints the matrix
+void MagicSquare::printMatrix()  //Prints the matrix
 {
     cout<<endl;
     cout<<"Your Matrix is: "<<endl;
@@ -86,7 +107,7 @@ void MagicNumber::printMatrix()  //Prints the matrix
     cout<<endl;
 }
 
-void MagicNumber::CheckHorizontal() //Checks the sum for all rows
+void MagicSquare::CheckHorizontal() //Checks the sum for all rows
 {
     if(isMagicSquare)
     {
@@ -107,7 +128,7 @@ void MagicNumber::CheckHorizontal() //Checks the sum for all rows
     }
 }
 
-void MagicNumber::CheckVertical()  //Checks the sum for all columns
+void MagicSquare::CheckVertical()  //Checks the sum for all columns
 {
     if(isMagicSquare)
     {
@@ -128,7 +149,7 @@ void MagicNumber::CheckVertical()  //Checks the sum for all columns
     }
 }
 
-void MagicNumber::CheckDiagonalLeftToRight() //Checks the sum of one diagonal.
+void MagicSquare::CheckDiagonalLeftToRight() //Checks the sum of one diagonal.
 {
     if(isMagicSquare)
     {
@@ -144,7 +165,7 @@ void MagicNumber::CheckDiagonalLeftToRight() //Checks the sum of one diagonal.
     }
 }
 
-void MagicNumber::CheckDiagonalRightToLeft()  //Checks the sum for other diagonal
+void MagicSquare::CheckDiagonalRightToLeft()  //Checks the sum for other diagonal
 {
     if(isMagicSquare)
     {
@@ -160,13 +181,8 @@ void MagicNumber::CheckDiagonalRightToLeft()  //Checks the sum for other diagona
     }
 }
 
-int main()
+void MagicSquare::Result()
 {
-    MagicNumber obj; 
-    /*
-    Since all the methods are c
-    alled in the constructor, no need to call them in main
-    */
     if(isMagicSquare)
     {
         cout<<"MAGIC SQUARE"<<endl;
@@ -175,6 +191,99 @@ int main()
     {
         cout<<"NOT A MAGIC SQUARE"<<endl;
     }
+}
 
-    return 0;
+void CreateMS::getData()
+{
+	cout<<"Enter n(odd):";
+	cin>>n;
+	cout<<endl;
+}
+
+void CreateMS::InitiateMatrix()
+{
+	for(row = 0; row < n; row++)
+	{
+		for(col = 0; col < n; col++)
+		{
+			matrix[row][col] = 0;
+		}
+	}
+}
+
+void CreateMS::putData() //Puts all the numbers in the matrix in order
+{
+	int i;
+	row = n/2;
+	col = n - 1;
+	for(i = 1; i <= n*n; i++, row--, col++)
+	{
+		if(row == -1 && col == n) //Rule 3 right corner
+		{
+			row = 0;
+			col = n - 2;
+		}
+		if(row < 0) //wrapping
+		{
+			row = n - 1;
+		}
+		if(col >= n) //wrapping
+		{
+			col = 0;
+		}
+		if(matrix[row][col] != 0) //Rule 2 already occupied
+		{
+			col -= 2;
+			row++;
+			if(row < 0) //wrapping
+			{
+				row = n - 1;
+			}
+			if(col >= n) //wrapping
+			{
+				col = 0;
+			}
+		}
+
+		matrix[row][col] = i;
+	}
+}
+
+void CreateMS::printMatrix()  //Prints matrix
+{
+    cout<<endl;
+    cout<<"Your Matrix is: "<<endl;
+
+    for(row = 0; row < n; row++)
+    {
+        for(col = 0; col < n; col++)
+        {
+            cout<<matrix[row][col]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+
+    cout<<"Sum is: "<<n*(n*n + 1)/2<<endl;
+}
+
+int main()
+{
+    int UserWish;
+    cout<<"Do you want to check the given matrix is magic square or not? PRESS 1\nOr do you want me to print a magic square of size n*n for you? PRESS 2"<<endl;
+    cin>>UserWish;
+
+    if(UserWish == 1)
+    {
+        MagicSquare obj;
+    }
+    else if(UserWish == 2)
+    {
+        CreateMS obj;
+    }
+    else{
+        cout<<"Something went wrong!";
+    }
+
+	return 0;
 }
