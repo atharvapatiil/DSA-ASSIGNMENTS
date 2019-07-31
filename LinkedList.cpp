@@ -23,7 +23,36 @@ public:
     int Count();
     void Display();
     int ElementAtIndex(int index);
+    void Remove(int index);
 };
+
+void List::Remove(int index)
+{
+	if(index == 0)
+	{
+		Node* second = (first->next);
+		delete first->next;
+		first = second;
+	}
+	else
+	{
+		Node *previous = first;
+		Node *current, *later;
+		
+		int _count = 0;
+		while(_count < index - 1)
+		{
+			previous = previous->next;
+			_count++;
+		}
+		current = previous->next;
+		later = current->next;
+	
+		previous->next = later;
+		delete current;
+	}
+
+}
 
 int List::ElementAtIndex(int index)
 {
@@ -158,10 +187,11 @@ int main()
     l1.InsertAtEnd(6);
     l1.InsertAtStart(0);
     l1.InsertInMiddle(3, 3);
+    l1.Remove(0);
 
     l1.Display();
     cout<<endl;
-    cout<<"ELEMENT AT INDEX 2: "<<l1.ElementAtIndex(0);
+    cout<<"ELEMENT AT INDEX 2: "<<l1.ElementAtIndex(2);
     cout<<endl;
     cout<<"The list contains: "<<l1.Count()<<" items"<<endl;
     return 0;
