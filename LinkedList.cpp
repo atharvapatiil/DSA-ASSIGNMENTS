@@ -1,12 +1,13 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 class Node
 {
 public:
-    int info;
+    int prn;
+	string name;
     Node *next;
-
 };
 
 class List
@@ -17,12 +18,12 @@ public:
     {
         first = NULL;
     }
-    void InsertAtEnd(int x);
-    void InsertAtStart(int x);
-    void InsertInMiddle(int num, int index);
-    int Count();
-    void Display();
-    int ElementAtIndex(int index);
+    void InsertAtEnd(int x, string str);				//Done
+    void InsertAtStart(int x, string str);				//Done
+    void InsertInMiddle(int x, string str, int index);	//Done
+    int Count();										//Done
+    void Display();										//Done
+    void ElementAtIndex(int index);						//Done
     void Remove(int index);
 };
 
@@ -33,6 +34,16 @@ void List::Remove(int index)
 		Node* second = (first->next);
 		delete first->next;
 		first = second;
+	}
+	else if(index == Count() - 1)
+	{
+		Node *current = first;
+		int _count = 0;
+		while(_count <= index)
+		{
+			current = current->next;
+		}
+		
 	}
 	else
 	{
@@ -54,18 +65,18 @@ void List::Remove(int index)
 
 }
 
-int List::ElementAtIndex(int index)
+void List::ElementAtIndex(int index)
 {
     Node*current = first;
     int _count = 0;
     if(first == NULL)
     {
         cout<<"Emplty List"<<endl;
-        return -1;
+		return;
     }
     if(index == 0)
     {
-        return (first->info);
+        cout<<"PRN: "<<first->prn<<" Name: "<<first->name<<endl;
     }
     else
     {
@@ -74,15 +85,15 @@ int List::ElementAtIndex(int index)
             current = current->next;
             _count++;
         }
-        return(current->info);
+        cout<<"PRN: "<<(current->prn)<<" Name: "<<endl;
     }
 }
 
-void List::InsertInMiddle(int x, int index)
+void List::InsertInMiddle(int x, string str, int index)
 {
     if(index == 0)
     {
-        InsertAtStart(x);
+        InsertAtStart(x, str);
         return;
     }
     else if(index >= Count())
@@ -95,7 +106,8 @@ void List::InsertInMiddle(int x, int index)
         Node *newNode = new Node;
         Node *current, *prev = first;
         int _count = 0;
-        newNode->info = x;
+        newNode->prn = x;
+		newNode->name = str;
 
         while(_count < index - 1)
         {
@@ -108,20 +120,22 @@ void List::InsertInMiddle(int x, int index)
     }
 }
 
-void List::InsertAtStart(int x)
+void List::InsertAtStart(int x, string str)
 {
     Node *newNode;
     newNode = new Node;
-    newNode->info = x;
+    newNode->prn = x;
+	newNode->name = str;
     newNode->next = first;
     first = newNode;
 }
 
-void List::InsertAtEnd(int x)
+void List::InsertAtEnd(int x, string str)
 {
-    Node *current, *newNode;
-    newNode = new Node;
-    newNode->info = x;
+	Node *newNode = new Node;
+    Node *current;  
+    newNode->prn = x;
+	newNode->name = str;
     newNode->next = NULL;
 
     if(first == NULL)
@@ -151,7 +165,7 @@ void List::Display()
     {
         while(current != NULL)
         {
-            cout<<current->info<<" ";
+            cout<<"PRN: "<<current->prn<<" Name: "<<current->name<<endl;
             current = current->next;
         }
     }
@@ -179,20 +193,12 @@ int List::Count()
 
 int main()
 {
-    List l1;
-    l1.InsertAtEnd(1);
-    l1.InsertAtEnd(2);
-    l1.InsertAtEnd(4);
-    l1.InsertAtEnd(5);
-    l1.InsertAtEnd(6);
-    l1.InsertAtStart(0);
-    l1.InsertInMiddle(3, 3);
-    l1.Remove(0);
-
-    l1.Display();
-    cout<<endl;
-    cout<<"ELEMENT AT INDEX 2: "<<l1.ElementAtIndex(2);
-    cout<<endl;
-    cout<<"The list contains: "<<l1.Count()<<" items"<<endl;
+	List l1;
+	l1.InsertAtEnd(1, "Sahil Hadke");
+	l1.InsertAtEnd(2, "Roll two");
+	l1.InsertAtStart(0, "Roll zero");
+	l1.InsertInMiddle(5, "Second element", 1);
+	cout<<l1.Count();
+	l1.Display();
     return 0;
 }
