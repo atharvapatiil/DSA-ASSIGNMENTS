@@ -13,7 +13,6 @@ public:
 	Node* next;
 	Node()
 	{
-		next = NULL;
 		available = 1;
 	}
 };
@@ -40,26 +39,28 @@ void List::InsertAtEnd(int i = 1)
 	if(head == NULL)
 	{
 		head = newNode;
+		newNode->next = head;
 	}
 	else
 	{
 		Node *current;
 		current = head;
-		while(current->next != NULL)
+		while(current->next != head)
 			current = current->next;
-		current->next = newNode;	
+		current->next = newNode;
+		newNode->next = head;	
 	}	
 }
 
 void List::Display()
 {
 	Node *current = head;
-	while(current->next != NULL)
+	while(current->next != head)
 	{
 		cout << current->available << " ";
 		current = current->next;
 	}
-	cout<<endl;
+	cout<<endl;	
 }
 
 void List::Book()
@@ -76,7 +77,7 @@ void List::Book()
 		
 	Node *current = head;
 	int i = 1;
-	while(current->next!= NULL && i <= num2)
+	while(current->next!= head && i <= num2)
 	{
 		current = current->next;
 		i++;
@@ -98,7 +99,7 @@ void List::UnBook()
 		
 	Node *current = head;
 	int i = 1;
-	while(current->next!= NULL && i <= num2)
+	while(current->next!= head && i <= num2)
 	{
 		current = current->next;
 		i++;
@@ -141,9 +142,10 @@ int main()
 				arr[n2]->UnBook();
 				break;
 			case 3:
-				cout<<"PRINTING"<<endl;
+				cout<<"===========DISPLAYING===========\n1 = Available, 0 = Booked"<<endl;
 				for(int i = 0; i < 10; i++)
 					arr[i]->Display();
+				cout<<"===========DISPLAYING FINISHED==========="<<endl;
 				break;
 		}
 
