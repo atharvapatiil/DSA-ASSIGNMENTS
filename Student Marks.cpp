@@ -1,7 +1,7 @@
 /*
-    ==============
-     ASSIGNMENT 2
-    ==============
+    ==============================
+     ASSIGNMENT 2 : Student Marks
+    ==============================
     Code by: SAHIL HADKE
     Roll Number: 17
     Batch: S1
