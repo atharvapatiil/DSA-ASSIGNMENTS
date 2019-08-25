@@ -1,3 +1,15 @@
+/*
+===================================
+ ASSIGNMENT 3 : Password generator
+===================================
+Name: Sahil Hadke
+Roll No. : 17
+Batch: S2
+
+Set A=(1,3, a, s, t, i} represent alphanumeric characters permitted to be used to set the
+password of length 4. Write C/C++ program to generate all possible passwords
+*/
+
 #include<iostream>
 using namespace std;
 
