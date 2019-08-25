@@ -18,7 +18,6 @@ c)  The booking can be cancelled.
 */
 
 #include<iostream>
-#include<string>
 using namespace std;
 
 class Node
