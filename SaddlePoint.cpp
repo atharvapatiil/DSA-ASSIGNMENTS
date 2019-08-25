@@ -5,7 +5,9 @@
     Code by: SAHIL HADKE
     Roll No: 17
     Batch: S1
-    Question: Saddle Point
+    Question: An m x n matrix is said to have a saddle point if some entry a[i][j] is the smallest value in
+              row i and the largest value in j. Write C/ C++ function that determines the location of a
+              saddle point if one exists
 */
 
 #include<iostream>
