@@ -1,3 +1,16 @@
+/*
+==================================
+ ASSIGNMENT 6 : String Operations
+==================================
+
+Name : Sahil Hadke
+Roll No : 17
+Batch : S2
+
+Write C++ program for string operations- copy, concatenate, check substring, equal, reverse
+and length
+*/
+
 #include<iostream>
 #include<cstring>
 using namespace std;
@@ -8,15 +21,15 @@ class String
 {
 public:
 	char str[size];	
-	int length(char arr[size]);								//done
-	int length();											//done
-	void copyString(char arr[size], char arr2[size]); 		//done
-	void Reverse(char arr[size]);							//done
-	void Concat(char arr[size], char arr2[size]); 			//done
-	void getData();											//done
-	bool Search(char arr[size]);							//done										
-	bool checkEqual(char arr[size]);						//done
-	bool Palindrome();										//done
+	int length(char arr[size]);					
+	int length();											
+	void copyString(char arr[size], char arr2[size]); 		
+	void Reverse(char arr[size]);							
+	void Concat(char arr[size], char arr2[size]); 			
+	void getData();
+	bool Search(char arr[size]);										
+	bool checkEqual(char arr[size]);
+	bool Palindrome();
 
 };
 
