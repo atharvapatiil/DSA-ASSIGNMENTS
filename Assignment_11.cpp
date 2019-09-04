@@ -51,16 +51,20 @@ int Precedence(char ch)
 {
     switch(ch)
     {
+		case '(':
+			return 1;
+		case ')':
+			return 1;
         case '+':
-            return 1;
+            return 2;
         case '-':
-            return 1;
+            return 2;
         case '/':
-            return 1;
-        case '*':
-            return 1;
-        case '^':
             return 3;
+        case '*':
+            return 3;
+        case '^':
+            return 4;
     }
 }
 
@@ -85,18 +89,23 @@ int main()
             cout<<infix[i];
         else
         {
-            if(s.top != -1 && Precedence(infix[i]) < Precedence(s.Peek()))
-            {
-                s.Push(infix[i]);
-            }
-            else
-            {
-                while(Precedence(s.Peek()) > infix[i])
-                {
-                    cout<<s.Pop();
-                }
-                s.Push(infix[i]);
-            }
+        	if(s.top == -1)
+				s.Push(infix[i]);
+			else
+			{
+				if(Precedence(s.Peek()) < Precedence(infix[i]))
+					s.Push(infix[i]);
+				else if(infix[i] != ')')
+				{
+					
+					while(Precedence(s.Peek()) >= Precedence(infix[i]))
+					{
+						cout<<s.Pop();
+					}
+					s.Push(infix[i]);
+				}
+				//else if(
+			}
         }
     }
     while(s.top >= 0)
