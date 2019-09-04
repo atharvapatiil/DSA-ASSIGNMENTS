@@ -70,7 +70,7 @@ int Precedence(char ch)
 
 bool isOperator(char ch)
 {
-    if(ch == '+' || ch == '-' || ch == '/' || ch == '^' || ch == '*')
+    if(ch == '+' || ch == '-' || ch == '/' || ch == '^' || ch == '*' || ch == '(' || ch == ')')
         return true;
     return false;
 }
@@ -93,9 +93,17 @@ int main()
 				s.Push(infix[i]);
 			else
 			{
-				if(Precedence(s.Peek()) < Precedence(infix[i]))
+				if(infix[i] == ')')
+				{
+					while(s.Peek() != '(')
+					{
+						cout<<s.Pop();
+					}
+					s.Pop();
+				}
+				else if(Precedence(s.Peek()) < Precedence(infix[i]))
 					s.Push(infix[i]);
-				else if(infix[i] != ')')
+				else
 				{
 					
 					while(Precedence(s.Peek()) >= Precedence(infix[i]))
@@ -104,7 +112,6 @@ int main()
 					}
 					s.Push(infix[i]);
 				}
-				//else if(
 			}
         }
     }
