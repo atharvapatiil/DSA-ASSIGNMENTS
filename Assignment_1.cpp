@@ -1,6 +1,6 @@
 /*
-    ==========================================================
- 	ASSIGNMENT 1 : CALCULATOR USING SWITCH AND CLASSES 
+    =========================================================
+ 	ASSIGNMENT 1 : CALCULATOR USING SWITCH AND CLASS 
     ==========================================================
  
     Code by: SAHIL HADKE
